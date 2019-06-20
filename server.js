@@ -1,12 +1,16 @@
 var express = require('express'),
     mongoose = require('mongoose')
 
+const bodyParser = require('body-parser');
+
 
 const app = express();
 app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-var Boxes = require('./public/routes/boxes.js')
-var Users = require('./public/routes/users.js')
+
+var Boxes = require('./app/routes/boxes')
+var User = require('./app/routes/user')
 
 
 var mongoDB = 'mongodb://127.0.0.1/dbLirows';
@@ -16,7 +20,7 @@ var port = process.env.PORT || 3000
 
 
 app.use('/boxes', Boxes);
-app.use('/users', Users);
+app.use('/users', User);
 
 
 app.get('/', function(req, res){
@@ -24,5 +28,5 @@ app.get('/', function(req, res){
   })
 
   app.listen(port, function(){
-    console.log("App Lirows Executando na Porta: " + port)
+    console.log("Backend Executando na Porta: " + port)
 })

@@ -1,6 +1,6 @@
 var express = require('express')
 var router = express.Router()
-var Box = require('../../app/models-mongodb/box')
+var Box = require('../models-mongodb/box')
 
 
 router.use(function timeLog(req, res, next) {
