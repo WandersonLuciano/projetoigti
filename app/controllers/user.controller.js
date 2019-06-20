@@ -71,9 +71,7 @@ exports.update = (req, res) => {
         {
             where: {
                 id: req.params.id}
-        }
-    
-        )
+        })
         .then(userUpdate => res.json({
             error: false,
             data: userUpdate,
@@ -84,5 +82,26 @@ exports.update = (req, res) => {
             data: [],
             error: error,
             message: 'Error updating'
+        }))
+}
+
+exports.delete = (req, res) => {
+
+    const userDeleted = User.destroy(
+        {
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(userDeleted => res.json({
+            error: false,
+            data: userDeleted,
+            message: 'User has been deleted'
+        }))
+        .catch(error => res.json({
+            error: true,
+            data: [],
+            error: error,
+            message: 'Error deleting'
         }))
 }
