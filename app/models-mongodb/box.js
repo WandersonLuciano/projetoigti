@@ -4,11 +4,10 @@ var mongoose = require('mongoose'),
 
 var BoxSchema = new Schema({
 
-    id: {type: Number},
-    description: {type: String},
-    program: {type: String},
-    content: {type: String},
-    lirowId: {type: Number},
+    description: {type: String, required: true},
+    program: {type: String, required: true},
+    content: {type: String, required: true},
+    lirowId: {type: Number, required: true},
 
     
 })
